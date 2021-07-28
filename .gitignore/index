@@ -1,8 +1,8 @@
 {
 	"activityType": "PLAYING",
-	"bot.login(process.env.TOKEN)",
 	"serverInfo":[
 		"85.190.160.60",
 		19000
 	]
 }
+bot.login(process.env.TOKEN)
