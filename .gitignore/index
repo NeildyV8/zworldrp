@@ -1,10 +1,62 @@
-const Discord = require("discord.js");
-var bot = new Discord.Client();
-{
-	"activityType": "PLAYING",
-	"serverInfo":[
-		"85.190.160.60",
-		19000
-	]
-}
 bot.login(process.env.TOKEN)
+const Discord = require("discord.js");
+
+var bot = new Discord.Client();
+
+bot.on("ready", function() {
+    bot.user.setGame(activityType": "PLAYING");
+	"serverInfo":[
+	"85.190.160.60";
+	19000;
+    console.log("Le bot a bien ete connecte")
+});
+
+const PREFIX = "!";
+
+const EVERYONE = "@";
+
+bot.on('guildMemberAdd', member => {
+
+    let serverTag = member.guild.name
+    const welcomechannel = member.guild.channels.find('id', '589495364386554043')
+    const role = member.guild.roles.find("name", "NEW")    
+    member.addRole(role)
+    var embed = new Discord.RichEmbed()
+    .setDescription(`:white_check_mark: Bienvenue à <@${member.user.id}> qui à rejoint le server ${serverTag}`)
+    return welcomechannel.send({embed})
+});
+
+bot.on("message", async function(message) {
+    if (message.author.equals(bot.user)) return;
+
+    if (!message.content.startsWith(PREFIX)) return;
+
+    var args = message.content.substring(PREFIX.length).split (" ");
+
+    var args2 = message.content.split(" ").slice(1);
+
+    var suffix = args2.join(" ");
+
+    var reason = args2.slice(1).join(" ");
+    
+    var reasontimed = args2.slice(2).join(' ')
+
+    var user = message.mentions.users.first();
+    
+    var guild = message.guild;
+    
+    var member = message.member;
+
+    var roleJoueur= member.guild.roles.find("name", "Membre")
+    
+    var roleMute = member.guild.roles.find("name", "Mute")
+    
+    var modlog = member.guild.channels.find("name", "log")
+    
+    var user = message.mentions.users.first();
+
+        }
+    });
+
+
+	bot.login(process.env.TOKEN);
